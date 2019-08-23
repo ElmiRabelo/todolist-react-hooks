@@ -9,10 +9,17 @@ import Divider from "@material-ui/core/Divider";
 //custom components
 import Todo from "./todo.component";
 
-function TodoList(props) {
-	const mapTodos = props.todos.map(todo => (
+function TodoList({ todos, removeTodo, updateComplete }) {
+	const mapTodos = todos.map(todo => (
 		<>
-			<Todo task={todo.task} key={todo.id} completed={todo.completed} />
+			<Todo
+				id={todo.id}
+				task={todo.task}
+				key={todo.id}
+				completed={todo.completed}
+				removeTodo={removeTodo}
+				updateComplete={updateComplete}
+			/>
 			<Divider />
 		</>
 	));
