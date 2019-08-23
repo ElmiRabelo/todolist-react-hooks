@@ -18,8 +18,8 @@ function TodoList(props) {
 		<Paper
 			style={{
 				width: "60vw",
-				margin: "50px auto",
-				padding: "20px",
+				padding: "20px 10px",
+				margin: "12px 0",
 				backgroundColor: "#7289da"
 			}}
 		>

@@ -10,6 +10,7 @@ import { inherits } from "util";
 
 //custom components
 import TodoList from "./todo-list.component";
+import TodoForm from "./todo-form.component";
 
 function TodoApp() {
 	const initialTodos = [
@@ -18,13 +19,21 @@ function TodoApp() {
 		{ id: 3, task: "Comprar leite", completed: true }
 	];
 	const [todos, setTodos] = useState(initialTodos);
+
+	const addTodos = newTodoText => {
+		setTodos([...todos, { id: 4, task: newTodoText, completed: false }]);
+	};
+
 	return (
 		<Paper
 			style={{
 				padding: 0,
 				margin: 0,
 				height: "100vh",
-				backgroundColor: "#23272a"
+				backgroundColor: "#23272a",
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center"
 			}}
 			elevation={0}
 		>
@@ -33,6 +42,7 @@ function TodoApp() {
 					<Typography color="inherit">TODO USANDO HOOKS</Typography>
 				</Toolbar>
 			</AppBar>
+			<TodoForm addTodo={addTodos} />
 			<TodoList todos={todos} />
 		</Paper>
 	);
