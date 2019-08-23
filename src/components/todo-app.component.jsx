@@ -30,10 +30,7 @@ function TodoApp() {
 				padding: 0,
 				margin: 0,
 				height: "100vh",
-				backgroundColor: "#23272a",
-				display: "flex",
-				flexDirection: "column",
-				alignItems: "center"
+				backgroundColor: "#23272a"
 			}}
 			elevation={0}
 		>
@@ -42,8 +39,13 @@ function TodoApp() {
 					<Typography color="inherit">TODO USANDO HOOKS</Typography>
 				</Toolbar>
 			</AppBar>
-			<TodoForm addTodo={addTodos} />
-			<TodoList todos={todos} />
+
+			<Grid container justify="center" style={{ marginTop: "2rem" }}>
+				<Grid item xs={11} md={9} lg={7}>
+					<TodoForm addTodo={addTodos} />
+					<TodoList todos={todos} />
+				</Grid>
+			</Grid>
 		</Paper>
 	);
 }

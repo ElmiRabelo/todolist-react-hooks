@@ -1,26 +1,26 @@
 import React from "react";
+
+//material ui components
 import Paper from "@material-ui/core/Paper";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
+
 import Divider from "@material-ui/core/Divider";
+
+//custom components
+import Todo from "./todo.component";
 
 function TodoList(props) {
 	const mapTodos = props.todos.map(todo => (
 		<>
-			<ListItem>
-				<ListItemText style={{ color: "white" }}>{todo.task}</ListItemText>
-			</ListItem>
+			<Todo task={todo.task} key={todo.id} completed={todo.completed} />
 			<Divider />
 		</>
 	));
 	return (
 		<Paper
 			style={{
-				width: "60vw",
-				padding: "20px 10px",
-				margin: "12px 0",
-				backgroundColor: "#7289da"
+				padding: "10px",
+				backgroundColor: "#7289DA"
 			}}
 		>
 			<List>{mapTodos}</List>

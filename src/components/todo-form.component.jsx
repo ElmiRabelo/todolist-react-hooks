@@ -10,14 +10,15 @@ import userInputState from "../hooks/userInputState";
 function TodoForm({ addTodo }) {
 	const [value, handleChange, reset] = userInputState("");
 	const textFieldStyles = {
-		width: "60vw",
-		padding: "10px",
-		backgroundColor: "#99aab5",
+		padding: "10px 10px 0 10px",
+		backgroundColor: "#e7e7e7",
+		borderBottom: "none",
 		margin: "10px 0",
-		borderRadius: "5px"
+		borderRadius: "5px",
+		alignSelf: "center"
 	};
 	return (
-		<div>
+		<div style={textFieldStyles}>
 			<form
 				onSubmit={e => {
 					e.preventDefault();
@@ -26,9 +27,9 @@ function TodoForm({ addTodo }) {
 				}}
 			>
 				<TextField
-					style={textFieldStyles}
 					value={value}
 					placeholder="Adicionar nova todo"
+					fullWidth={true}
 					onChange={handleChange}
 				/>
 			</form>
