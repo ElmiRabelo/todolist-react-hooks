@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import uuid from "uuid/v4";
 
@@ -15,9 +15,15 @@ import TodoList from "./todo-list.component";
 import TodoForm from "./todo-form.component";
 
 function TodoApp() {
-	const initialTodos = [{ id: 1, task: "Primeira tarefa", completed: false }];
+	const initialTodos = JSON.parse(window.localStorage.getItem('todos')) || [{ id: 1, task: "Bem vindo ao app", completed: false }];
+
 	const [todos, setTodos] = useState(initialTodos);
 
+	useEffect(() => {
+		window.localStorage.setItem("todos", JSON.stringify(todos));
+	},[todos])
+	/////////////////////////////////////////
+	//--> Methods
 	const addTodos = newTodoText => {
 		setTodos([...todos, { id: uuid(), task: newTodoText, completed: false }]);
 	};
