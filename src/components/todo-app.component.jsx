@@ -1,51 +1,26 @@
-import React, { useState, useEffect } from "react";
-
-import uuid from "uuid/v4";
+import React, { useEffect } from "react";
+import useTodoState from "../hooks/useTodoState";
 
 //components de material-ui
-import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
-import { inherits } from "util";
 
 //custom components
 import TodoList from "./todo-list.component";
 import TodoForm from "./todo-form.component";
 
 function TodoApp() {
-	const initialTodos = JSON.parse(window.localStorage.getItem('todos')) || [{ id: 1, task: "Bem vindo ao app", completed: false }];
+	const initialTodos = JSON.parse(window.localStorage.getItem("todos")) || [
+		{ id: 1, task: "Bem vindo ao app", completed: false }
+	];
 
-	const [todos, setTodos] = useState(initialTodos);
+	const { todos, addTodo, removeTodo, updateComplete, editTodo } = useTodoState(
+		initialTodos
+	);
 
 	useEffect(() => {
 		window.localStorage.setItem("todos", JSON.stringify(todos));
-	},[todos])
-	/////////////////////////////////////////
-	//--> Methods
-	const addTodos = newTodoText => {
-		setTodos([...todos, { id: uuid(), task: newTodoText, completed: false }]);
-	};
-
-	const removeTodo = todoId => {
-		const filteredTodos = todos.filter(todo => todo.id !== todoId);
-		setTodos(filteredTodos);
-	};
-
-	const updateComplete = todoId => {
-		const updatedTodos = todos.map(todo =>
-			todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
-		);
-		setTodos(updatedTodos);
-	};
-
-	const editTodo = (todoId, newValue) => {
-		const updatedTodos = todos.map(todo =>
-			todo.id === todoId ? { ...todo, task: newValue } : todo
-		);
-		setTodos(updatedTodos);
-	};
+	}, [todos]);
 
 	return (
 		<Paper
@@ -62,12 +37,15 @@ function TodoApp() {
 			<h1
 				style={{
 					margin: 0,
-					fontSize: "2.5rem",
+					fontSize: "3rem",
 					letterSpacing: "0.4rem",
-					fontFamily: "sans-serif",
-					color: "#ffffff",
+					fontFamily: "Roboto, sans-serif",
+					fontWeight: 700,
+					textShadow: "0 1px 1px rgba(0, 0, 0, 0.6)",
+					color: "#f6f6f6",
 					textAlign: "center",
-					padding: "2rem 0 10px 0"
+					padding: "1rem",
+					backgroundColor: "#7289DA"
 				}}
 			>
 				Lista de Tarefas
@@ -75,7 +53,7 @@ function TodoApp() {
 
 			<Grid container justify="center" style={{ marginTop: "2rem" }}>
 				<Grid item xs={11} md={9} lg={7}>
-					<TodoForm addTodo={addTodos} />
+					<TodoForm addTodo={addTodo} />
 					<TodoList
 						todos={todos}
 						removeTodo={removeTodo}

@@ -25,16 +25,19 @@ function TodoList({ todos, removeTodo, updateComplete, editTodo }) {
 		</>
 	));
 
-	return (
-		<Paper
-			style={{
-				padding: "10px",
-				backgroundColor: "#7289DA"
-			}}
-		>
-			<List>{mapTodos}</List>
-		</Paper>
-	);
+	if (todos.length) {
+		return (
+			<Paper
+				style={{
+					padding: "10px",
+					backgroundColor: "#7289DA"
+				}}
+			>
+				<List>{mapTodos}</List>
+			</Paper>
+		);
+	}
+	return null;
 }
 
 export default TodoList;
