@@ -29,7 +29,7 @@ function TodoForm({ addTodo }) {
 			>
 				<TextField
 					value={value}
-					placeholder="Adicionar nova todo"
+					placeholder="Adicionar nova tarefa"
 					fullWidth={true}
 					onChange={handleChange}
 				/>

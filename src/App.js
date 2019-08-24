@@ -3,7 +3,7 @@ import TodoApp from "./components/todo-app.component";
 
 function App() {
 	return (
-		<div>
+		<div style={{ height: "100vh" }}>
 			<TodoApp />
 		</div>
 	);

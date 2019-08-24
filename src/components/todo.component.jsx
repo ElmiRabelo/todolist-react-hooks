@@ -17,7 +17,7 @@ function Todo({ id, task, completed, removeTodo, updateComplete, editTodo }) {
 	const [isEditing, toggleIsEditing] = useToggleState(false);
 
 	return (
-		<ListItem>
+		<ListItem style={{ height: "64px" }}>
 			{isEditing ? (
 				<EditTodo
 					id={id}
