@@ -17,6 +17,7 @@ function TodoForm({ addTodo }) {
 		borderRadius: "5px",
 		alignSelf: "center"
 	};
+
 	return (
 		<div style={textFieldStyles}>
 			<form
