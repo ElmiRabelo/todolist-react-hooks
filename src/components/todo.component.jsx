@@ -34,8 +34,8 @@ function Todo({ id, task, completed, removeTodo, updateComplete, editTodo }) {
 					/>
 					<ListItemText
 						style={{
-							color: "#222",
-							fontSize: "18px",
+							color: "#111",
+							fontSize: "20px",
 							textDecoration: completed ? "line-through" : "none",
 							letterSpacing: "0.1rem"
 						}}
